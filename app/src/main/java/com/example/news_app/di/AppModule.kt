@@ -4,7 +4,7 @@ import android.app.Application
 import com.example.news_app.data.manger.LocalUserMangerImpl
 import com.example.news_app.domain.manger.LocalUserManger
 import com.example.news_app.domain.usecases.appentry.AppEntryUseCase
-import com.example.news_app.domain.usecases.appentry.RadAppEntry
+import com.example.news_app.domain.usecases.appentry.ReadAppEntry
 import com.example.news_app.domain.usecases.appentry.SaveAppEntry
 import dagger.Module
 import dagger.Provides
@@ -29,7 +29,7 @@ object AppModule {
     fun provideAppEntryUseCase(
         localUserManger: LocalUserManger
     ) = AppEntryUseCase(
-        readAppEntry = RadAppEntry(localUserManger),
+        readAppEntry = ReadAppEntry(localUserManger),
         saveAppEntry = SaveAppEntry(localUserManger)
     )
 }
