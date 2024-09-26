@@ -1,6 +1,5 @@
 package com.example.news_app.presentation.onBoarding
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,7 +25,6 @@ import com.example.news_app.presentation.onBoarding.components.OnBoardingPage
 import com.example.news_app.presentation.onBoarding.components.PageIndicator
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnBoardingScreen(
     onEvent: (OnBoardingEvent) -> Unit
