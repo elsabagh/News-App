@@ -6,6 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.news_app.presentation.home.HomeScreen
+import com.example.news_app.presentation.home.HomeViewModel
 import com.example.news_app.presentation.onBoarding.OnBoardingScreen
 import com.example.news_app.presentation.onBoarding.OnBoardingViewModel
 
@@ -31,19 +34,17 @@ fun NavGraph(
         }
         navigation(
             route = Route.NewsNavigation.route,
-            startDestination = Route.HomeScreen.route
+            startDestination = Route.NewsNavigatorScreen.route
         ) {
-            composable(route = Route.HomeScreen.route) {
+            composable(route = Route.NewsNavigatorScreen.route) {
+                val viewModel: HomeViewModel = hiltViewModel()
+                val articles = viewModel.news.collectAsLazyPagingItems()
+                HomeScreen(
+                    articles = articles,
+                    navigate = {
 
-            }
-            composable(route = Route.SearchScreen.route) {
-
-            }
-            composable(route = Route.BookmarkScreen.route) {
-
-            }
-            composable(route = Route.DetailsScreen.route) {
-
+                    }
+                )
             }
         }
     }
