@@ -17,7 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.news_app.presentation.Dimens.PaddingLarge
+import com.example.news_app.presentation.Dimens.LargePadding
 import com.example.news_app.presentation.Dimens.PageIndicatorWidth
 import com.example.news_app.presentation.common.NewsButton
 import com.example.news_app.presentation.common.NewsTextButton
@@ -55,7 +55,7 @@ fun OnBoardingScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = PaddingLarge)
+                .padding(horizontal = LargePadding)
                 .navigationBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically

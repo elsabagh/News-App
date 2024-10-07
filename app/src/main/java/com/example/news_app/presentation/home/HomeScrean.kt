@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.paging.compose.LazyPagingItems
 import com.example.news_app.R
 import com.example.news_app.domain.model.Article
-import com.example.news_app.presentation.Dimens.PaddingMedium
+import com.example.news_app.presentation.Dimens.MediumPadding
 import com.example.news_app.presentation.common.ArticlesList
 import com.example.news_app.presentation.common.SearchBar
 import com.example.news_app.presentation.navgraph.Route
@@ -48,7 +48,7 @@ fun HomeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = PaddingMedium)
+            .padding(top = MediumPadding)
             .statusBarsPadding()
     ) {
         Image(
@@ -57,13 +57,13 @@ fun HomeScreen(
             modifier = Modifier
                 .width(150.dp)
                 .height(30.dp)
-                .padding(horizontal = PaddingMedium)
+                .padding(horizontal = MediumPadding)
         )
 
-        Spacer(modifier = Modifier.height(PaddingMedium))
+        Spacer(modifier = Modifier.height(MediumPadding))
 
         SearchBar(
-            modifier = Modifier.padding(horizontal = PaddingMedium),
+            modifier = Modifier.padding(horizontal = MediumPadding),
             text = "",
             readOnly = true,
             onValueChange = {},
@@ -73,22 +73,22 @@ fun HomeScreen(
             }
         )
 
-        Spacer(modifier = Modifier.height(PaddingMedium))
+        Spacer(modifier = Modifier.height(MediumPadding))
 
         Text(
             text = titles,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = PaddingMedium)
+                .padding(start = MediumPadding)
                 .basicMarquee(),
             fontSize = 12.sp,
             color = colorResource(id = R.color.placeholder)
         )
 
-        Spacer(modifier = Modifier.height(PaddingMedium))
+        Spacer(modifier = Modifier.height(MediumPadding))
 
         ArticlesList(
-            modifier = Modifier.padding(horizontal = PaddingMedium),
+            modifier = Modifier.padding(horizontal = MediumPadding),
             articles = articles,
             onClick = {
 

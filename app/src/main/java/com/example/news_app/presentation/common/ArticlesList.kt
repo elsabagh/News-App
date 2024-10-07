@@ -11,7 +11,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.example.news_app.domain.model.Article
 import com.example.news_app.presentation.Dimens.ExtraSmallPadding2
-import com.example.news_app.presentation.Dimens.PaddingMedium
+import com.example.news_app.presentation.Dimens.MediumPadding
 import com.example.news_app.presentation.home.components.ArticleCard
 
 @Composable
@@ -24,7 +24,7 @@ fun ArticlesList(
     if (handlePagingResult) {
         LazyColumn(
             modifier = modifier,
-            verticalArrangement = Arrangement.spacedBy(PaddingMedium),
+            verticalArrangement = Arrangement.spacedBy(MediumPadding),
             contentPadding = PaddingValues(all = ExtraSmallPadding2)
         ) {
             items(
@@ -69,10 +69,10 @@ fun handlePagingResult(
 
 @Composable
 fun ShimmerEffect() {
-    Column(verticalArrangement = Arrangement.spacedBy(PaddingMedium)) {
+    Column(verticalArrangement = Arrangement.spacedBy(MediumPadding)) {
         repeat(10) {
             ArticleCardShimmerEffect(
-                modifier = Modifier.padding(horizontal = PaddingMedium)
+                modifier = Modifier.padding(horizontal = MediumPadding)
             )
         }
     }

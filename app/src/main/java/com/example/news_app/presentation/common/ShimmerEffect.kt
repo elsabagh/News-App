@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.example.news_app.R
 import com.example.news_app.presentation.Dimens
 import com.example.news_app.presentation.Dimens.ArticleCardSize
-import com.example.news_app.presentation.Dimens.PaddingMedium
+import com.example.news_app.presentation.Dimens.MediumPadding
 import com.example.news_app.ui.theme.NewsAppTheme
 
 fun Modifier.shimmerEffect() = composed {
@@ -66,7 +66,7 @@ fun ArticleCardShimmerEffect(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(30.dp)
-                    .padding(horizontal = PaddingMedium)
+                    .padding(horizontal = MediumPadding)
                     .shimmerEffect()
             )
             Row(
@@ -75,7 +75,7 @@ fun ArticleCardShimmerEffect(modifier: Modifier = Modifier) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.5f)
-                        .padding(horizontal = PaddingMedium)
+                        .padding(horizontal = MediumPadding)
                         .height(15.dp)
                         .shimmerEffect()
                 )
