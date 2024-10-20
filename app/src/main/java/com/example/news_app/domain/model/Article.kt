@@ -1,8 +1,11 @@
 package com.example.news_app.domain.model
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Article(
     @SerializedName("author")
     val author: String,
@@ -17,7 +20,7 @@ data class Article(
     @SerializedName("title")
     val title: String,
     @SerializedName("url")
-    val url: String,
+    @PrimaryKey val url: String,
     @SerializedName("urlToImage")
     val urlToImage: String
 )
