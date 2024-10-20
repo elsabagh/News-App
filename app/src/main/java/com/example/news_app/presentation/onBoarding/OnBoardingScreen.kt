@@ -1,5 +1,6 @@
 package com.example.news_app.presentation.onBoarding
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.news_app.presentation.Dimens.LargePadding
 import com.example.news_app.presentation.Dimens.PageIndicatorWidth
 import com.example.news_app.presentation.common.NewsButton
@@ -97,4 +99,11 @@ fun OnBoardingScreen(
         }
         Spacer(modifier = Modifier.weight(0.5f))
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Preview( uiMode = UI_MODE_NIGHT_YES)
+@Composable
+fun OnBoardingScreenPreview() {
+    OnBoardingScreen(onEvent = {})
 }
