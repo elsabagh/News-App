@@ -61,7 +61,7 @@ fun DetailsScreen(
                 }
             },
             onBookmarkClick = {
-                event(DetailsEvent.SaveArticle)
+                event(DetailsEvent.UpsertDeleteArticle(article))
             },
             onBackClick = navigateUp
         )
@@ -77,7 +77,8 @@ fun DetailsScreen(
         ) {
             item {
                 AsyncImage(
-                    model = ImageRequest.Builder(context = context).data(article.urlToImage).build(),
+                    model = ImageRequest.Builder(context = context).data(article.urlToImage)
+                        .build(),
                     contentDescription = null,
                     modifier = Modifier
                         .fillMaxWidth()

@@ -18,6 +18,7 @@ import com.example.news_app.domain.usecases.news.GetNews
 import com.example.news_app.domain.usecases.news.NewsUseCases
 import com.example.news_app.domain.usecases.news.SearchNews
 import com.example.news_app.domain.usecases.news.SelectArticle
+import com.example.news_app.domain.usecases.news.SelectArticles
 import com.example.news_app.domain.usecases.news.UpsertArticle
 import com.example.news_app.util.Constants.BASE_URL
 import com.example.news_app.util.Constants.NEWS_DATABASE_NAME
@@ -36,7 +37,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideLocalUserManger(
-        application: Application
+        application: Application,
     ): LocalUserManger {
         return LocalUserMangerImpl(application)
     }
@@ -44,7 +45,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideAppEntryUseCase(
-        localUserManger: LocalUserManger
+        localUserManger: LocalUserManger,
     ) = AppEntryUseCase(
         readAppEntry = ReadAppEntry(localUserManger),
         saveAppEntry = SaveAppEntry(localUserManger)
@@ -63,28 +64,29 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsRepository(
-        newsApi: NewsApi
-    ): NewsRepository = NewsRepositoryImpl(newsApi)
+        newsApi: NewsApi,
+        newsDao: NewsDao,
+    ): NewsRepository = NewsRepositoryImpl(newsApi, newsDao)
 
     @Provides
     @Singleton
     fun provideNewsUseCase(
         newsRepository: NewsRepository,
-        newDao: NewsDao
     ): NewsUseCases {
         return NewsUseCases(
             getNews = GetNews(newsRepository),
             searchNews = SearchNews(newsRepository),
-            upsertArticle = UpsertArticle(newDao),
-            deleteArticle = DeleteArticle(newDao),
-            selectArticle = SelectArticle(newDao)
+            upsertArticle = UpsertArticle(newsRepository),
+            deleteArticle = DeleteArticle(newsRepository),
+            selectArticles = SelectArticles(newsRepository),
+            selectArticle = SelectArticle(newsRepository)
         )
     }
 
     @Provides
     @Singleton
     fun providerNewsDataBase(
-        application: Application
+        application: Application,
     ): NewsDatabase {
         return Room.databaseBuilder(
             context = application,
@@ -98,6 +100,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsDao(
-        newsDatabase: NewsDatabase
+        newsDatabase: NewsDatabase,
     ): NewsDao = newsDatabase.newsDao
 }
